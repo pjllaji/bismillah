@@ -1,0 +1,66 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Pendaftaran Anggota Pramuka</title>
+</head>
+
+<body>
+
+    <h2>FORM PENDAFTARAN ANGGOTA PRAMUKA</h2>
+
+    <form action="https://rplcoders.com/proses.php" method="POST">
+
+        <label>Nama Lengkap</label><br>
+        <input type="text" name="nama" required>
+        <br><br>
+
+        <label>Nama Panggilan</label><br>
+        <input type="text" name="panggilan" required>
+        <br><br>
+
+        <label>Kelas</label><br>
+        <select name="kelas" required>
+            <option value="">-- Pilih Kelas --</option>
+            <option>X RPL 1</option>
+            <option>X RPL 2</option>
+            <option>XI RPL 1</option>
+            <option>XI RPL 2</option>
+            <option>XII RPL 1</option>
+            <option>XII RPL 2</option>
+        </select>
+        <br><br>
+
+        <label>Jenis Kelamin</label><br>
+        <input type="radio" name="jk" value="Laki-laki" required>
+        Laki-laki
+
+        <input type="radio" name="jk" value="Perempuan">
+        Perempuan
+        <br><br>
+
+        <label>Tanggal Lahir</label><br>
+        <input type="date" name="tanggal_lahir" required>
+        <br><br>
+
+        <label>Alamat</label><br>
+        <textarea name="alamat" rows="4" cols="40"></textarea>
+        <br><br>
+
+        <label>Nomor HP</label><br>
+        <input type="text" name="nohp" placeholder="08xxxxxxxxxx">
+        <br><br>
+
+        <label>Alasan Mengikuti Pramuka</label><br>
+        <textarea name="alasan" rows="4" cols="40"></textarea>
+        <br><br>
+
+        <input type="submit" value="Daftar">
+        <input type="reset" value="Reset">
+
+    </form>
+
+</body>
+</html>
+```

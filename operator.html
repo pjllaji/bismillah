@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<h1tml lang=en>
+
+    <head>
+        <title>Operator Aritmatika</title>
+    <head>    
+        <script>
+            function hitung() {
+                let angka1 = parseInt(document.getElementById("angka1").value);
+                let angka2 = parseInt(document.getElementById("angka2").value);
+                let hasil = document.getElementById("hasil");
+
+                let penjumlahan = angka1 + angka2;
+                let pengurangan = angka1 - angka2;
+                let perkalian = angka1 * angka2;
+                let pembagian = angka1 / angka2;
+
+                hasil.innerHTML = "Hasil Penjumlahan: " + penjumlahan + "<br>" +
+                    "Hasil Pengurangan: " + pengurangan + "<br>" +
+                    "Hasil Perkalian: " + perkalian + "<br>" +
+                    "Hasil Pembagian: " + pembagian;
+            }   
+
+        </script>
+    </head> 
+    <body>
+        <h1>Operator Aritmatika</h1>
+        <label for="angka1">Masukkan angka pertama:</label>
+        <input type="number" id="angka1">
+        <br>
+        <label for="angka2">Masukkan angka kedua:</label>
+        <input type="number" id="angka2">
+        <br>
+        <button onclick="hitung()">Hitung</button>
+        <p id="hasil"></p>
+    </body>
+</html>
+       

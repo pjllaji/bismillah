@@ -1,0 +1,455 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kopi Senja | Coffee Shop</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f8f5f0;
+            color: #38251b;
+        }
+
+        header {
+            background: #38251b;
+            color: white;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        header h1 {
+            color: #d9a66c;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        nav a:hover {
+            color: #d9a66c;
+        }
+
+        .hero {
+            min-height: 350px;
+            padding: 70px 8%;
+            background: linear-gradient(90deg, #38251b, #79543b);
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            line-height: 1.7;
+            max-width: 500px;
+        }
+
+        .hero button {
+            margin-top: 20px;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            background: #d9a66c;
+            color: #38251b;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        section {
+            padding: 50px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .search-box {
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto 30px;
+            padding: 12px;
+            border: 1px solid #cbb8a5;
+            border-radius: 8px;
+        }
+
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit, minmax(210px, 1fr)
+            );
+            gap: 22px;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: 12px;
+            padding: 22px;
+            text-align: center;
+            box-shadow: 0 4px 12px #00000012;
+            transition: 0.3s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .coffee-icon {
+            font-size: 60px;
+            margin-bottom: 12px;
+        }
+
+        .menu-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .price {
+            color: #93613c;
+            font-weight: bold;
+            margin: 12px 0;
+        }
+
+        .menu-card button,
+        .checkout-btn {
+            background: #38251b;
+            color: white;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+        .cart {
+            background: #eee5db;
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .cart ul {
+            margin: 20px 0;
+            padding-left: 22px;
+        }
+
+        .cart li {
+            margin-bottom: 12px;
+        }
+
+        .cart li button {
+            margin-left: 10px;
+            color: #a22;
+            cursor: pointer;
+        }
+
+        .about {
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        footer {
+            background: #38251b;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                justify-content: center;
+                text-align: center;
+            }
+
+            nav a {
+                margin: 0 8px;
+            }
+
+            .hero h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>☕ Kopi Senja</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#menu">Menu</a>
+            <a href="#about">Tentang</a>
+            <a href="#pesanan">Pesanan</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div>
+                <h2>Nikmati Kopi,<br>Temukan Cerita.</h2>
+                <p>
+                    Selamat datang di Kopi Senja, tempat terbaik
+                    untuk menikmati kopi pilihan, bersantai,
+                    dan menghabiskan waktu bersama teman.
+                </p>
+                <button onclick="lihatMenu(butterschotch)">
+                    Lihat Menu
+                </button>
+            </div>
+        </section>
+
+        <section id="menu">
+            <h2 class="section-title">Menu Favorit Kami</h2>
+
+            <input
+                type="text"
+                id="search"
+                class="search-box"
+                placeholder="Cari menu kopi..."
+                oninput="cariMenu()"
+            >
+
+            <div class="menu-container" id="daftar-menu"></div>
+        </section>
+
+        <section id="pesanan">
+            <h2 class="section-title">Keranjang Pesanan</h2>
+
+            <div class="cart">
+                <p id="jumlah-item">Belum ada pesanan.</p>
+                <ul id="daftar-pesanan"></ul>
+
+                <h3 id="total">Total: Rp0</h3>
+
+                <br>
+                <button class="checkout-btn"
+                    onclick="checkout()">
+                    Buat Pesanan
+                </button>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <h2 class="section-title">Tentang Kami</h2>
+            <p>
+                Kopi Senja hadir untuk memberikan pengalaman
+                menikmati kopi yang nyaman dan berkualitas.
+                Setiap cangkir dibuat dengan sepenuh hati,
+                menemani cerita dan momen terbaikmu.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Kopi Senja Coffee Shop.</p>
+        <p>Teman terbaik di setiap cerita ☕</p>
+    </footer>
+
+    <script>
+        // Data menu coffee shop
+        const menu = [
+            {
+                nama: "Espresso",
+                harga: 15000,
+                ikon: "☕"
+            },
+            {
+                nama: "Cappuccino",
+                harga: 22000,
+                ikon: "🥛"
+            },
+            {
+                nama: "Cafe Latte",
+                harga: 25000,
+                ikon: "☕"
+            },
+            {
+                nama: "Americano",
+                harga: 18000,
+                ikon: "🧋"
+            },
+            {
+                nama: "Caramel Macchiato",
+                harga: 28000,
+                ikon: "🍮"
+            },
+            {
+                nama: "Chocolate",
+                harga: 20000,
+                ikon: "🍫"
+            }
+        ];
+
+        let keranjang = [];
+
+        const formatRupiah = (angka) =>
+            "Rp" + angka.toLocaleString("id-ID");
+
+        // Menampilkan menu
+        function tampilkanMenu(data = menu) {
+            const daftar = document.getElementById("daftar-menu");
+            daftar.innerHTML = "";
+
+            if (data.length === 0) {
+                daftar.textContent = "Menu tidak ditemukan.";
+                return;
+            }
+
+            data.forEach((item) => {
+                const card = document.createElement("div");
+                card.className = "menu-card";
+
+                const ikon = document.createElement("div");
+                ikon.className = "coffee-icon";
+                ikon.textContent = item.ikon;
+
+                const nama = document.createElement("h3");
+                nama.textContent = item.nama;
+
+                const harga = document.createElement("p");
+                harga.className = "price";
+                harga.textContent = formatRupiah(item.harga);
+
+                const tombol = document.createElement("button");
+                tombol.textContent = "Tambah Pesanan";
+                tombol.addEventListener("click", () => {
+                    tambahPesanan(item.nama);
+                });
+
+                card.append(ikon, nama, harga, tombol);
+                daftar.appendChild(card);
+            });
+        }
+
+        // Pencarian menu
+        function cariMenu() {
+            const kata = document
+                .getElementById("search")
+                .value.toLowerCase();
+
+            const hasil = menu.filter((item) =>
+                item.nama.toLowerCase().includes(kata)
+            );
+
+            tampilkanMenu(hasil);
+        }
+
+        // Menambahkan menu ke keranjang
+        function tambahPesanan(nama) {
+            const item = menu.find((m) => m.nama === nama);
+            const pesanan = keranjang.find((p) => p.nama === nama);
+
+            if (pesanan) {
+                pesanan.jumlah++;
+            } else {
+                keranjang.push({
+                    nama: item.nama,
+                    harga: item.harga,
+                    jumlah: 1
+                });
+            }
+
+            tampilkanKeranjang();
+        }
+
+        // Menghitung dan menampilkan total
+        function tampilkanKeranjang() {
+            const daftar = document.getElementById("daftar-pesanan");
+            daftar.innerHTML = "";
+
+            let total = 0;
+            let jumlah = 0;
+
+            keranjang.forEach((item, index) => {
+                total += item.harga * item.jumlah;
+                jumlah += item.jumlah;
+
+                const li = document.createElement("li");
+                const teks = document.createElement("span");
+                teks.textContent =
+                    `${item.nama} x${item.jumlah} — ` +
+                    formatRupiah(item.harga * item.jumlah);
+
+                const hapus = document.createElement("button");
+                hapus.textContent = "Hapus";
+                hapus.addEventListener("click", () => {
+                    keranjang.splice(index, 1);
+                    tampilkanKeranjang();
+                });
+
+                li.append(teks, hapus);
+                daftar.appendChild(li);
+            });
+
+            document.getElementById("jumlah-item").textContent =
+                jumlah ? `Jumlah item: ${jumlah}` : "Belum ada pesanan.";
+
+            document.getElementById("total").textContent =
+                "Total: " + formatRupiah(total);
+        }
+
+        // Tombol navigasi
+        function lihatMenu() {
+            document.getElementById("menu").scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+
+        // Konfirmasi pesanan
+        function checkout() {
+            if (keranjang.length === 0) {
+                alert("Keranjang masih kosong!");
+                return;
+            }
+
+            const ringkasan = keranjang
+                .map((item) =>
+                    `${item.nama} x${item.jumlah}`
+                )
+                .join("\n");
+
+            const total = keranjang.reduce(
+                (sum, item) =>
+                    sum + item.harga * item.jumlah,
+                0
+            );
+
+            alert(
+                "Pesanan berhasil dibuat!\n\n" +
+                ringkasan +
+                "\n\nTotal: " + formatRupiah(total) +
+                "\n\nSilakan lakukan pembayaran di kasir."
+            );
+
+            keranjang = [];
+            tampilkanKeranjang();
+        }
+
+        // Jalankan saat halaman dibuka
+        tampilkanMenu();
+    </script>
+
+</body>
+</html>

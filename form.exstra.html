@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ 
+<body>
+    <h1>Form Registrasi Ekstrakurikuler</h1>
+    <form action="http://rplcoders.com/proses.php" method="post">
+        <fieldset>
+            <legend>Data Pribadi</legend>
+            <label for="nama">Nama Lengkap</label><br>
+            <input required type="text" name="nama" id="name" placeholder="ketikkan nama lengkap"><br>
+            <label for="tglahir">Tanggal Lahir</label><br>
+            <input type="date" name="tglahir" id="tglahir"><br>
+            <label for="alamat">Alamat Lengkap</label><br>
+            <textarea name="alamat" id="alamat" cols="30" rows="5"></textarea><br>
+            <label for="jk">Jenis Kelamin</label>
+            <input checked type="radio" name="jk" id="jk1" value="1"><label for="jk1">Laki-Laki</label>
+            <input type="radio" name="jk" id="jk2" value="2"><label for="jk2">Perempuan</label><br>
+            <label for="kelas">Kelas</label><br>
+            <select name="kelas" id="kelas">
+                <option value="xrpl1">XI RPL 1</option>
+                <option value="xrpl2">XI RPL 2</option>
+                <option value="xtkj1">XI TKJ 1</option>
+                <option value="xtkj2">XI TKJ 2</option>
+                <option value="xtkj3">XI TKJ 3</option>
+                <option value="xtkj4">XI TKJ 4</option>
+                <option value="xdpib1">XI DPIB 1</option>
+                <option value="xdpib2">XI DPIB 2</option>
+                <option value="xulw1">XI ULW 1</option>
+                <option value="xulw2">XI ULW 2</option>
+                <option value="xdpb1">XI DPB 1</option>
+                <option value="xdpb2">XI DPB 2</option>
+                <option value="xtkkr1">XI TKKR 1</option>
+                <option value="xtkkr2">XI TKKR 2</option>
+                <option value="xkriya">XI KRIYA</option>
+                <option value="xpspt1">XI PSPT 1</option>
+                <option value="xpspt2">XI PSPT 2</option>
+                <option value="xanimasi">XI ANIMASI</option>
+                <option value="xdkv1">XI DKV 1</option>
+                <option value="xdkv2">XI DKV 2</option>
+
+            </select><br>
+            <label for="foto">Pas Foto </label><br>
+            <input type="file" name="foto" id="foto"accept="image/*"capture="user"><br>
+        </fieldset>
+        <fieldset>
+            <legend>Ekstrakurikuler</legend>
+            <label for="ekskul">Pilihan Ekstrakurikuler (bisa lebih dari 1):</label><br>
+            <input type="checkbox" name="ekskul[]" id="ekskul1" value="pramuka">Pramuka <br>
+            <input type="checkbox" name="ekskul[]" id="ekskul2" value="pmr">PMR <br>
+            <input type="checkbox" name="ekskul[]" id="ekskul3" value="kir">KIR <br>
+            <input type="checkbox" name="ekskul[]" id="ekskul4" value="drum band">Drum Band <br>
+            <input type="checkbox" name="ekskul[]" id="ekskul5" value="futsal">Futsal <br>
+            <input type="checkbox" name="ekskul[]" id="ekskul6" value="basket">Basket <br>
+            <input type="checkbox" name="ekskul[]" id="ekskul7" value="voli">Voli <br>
+            <input type="checkbox" name="ekskul[]" id="ekskul8" value="badminton">Badminton <br>
+            <input type="checkbox" name="ekskul[]" id="ekskul9" value="sepakbola">Sepak Bola <br><br>
+            <label for="no_wa"></label>No WhatsApp</label><br>
+            <input type="text" name="no_wa" id="no_wa" placeholder="ketikkan no whatsapp"><br><br>
+            <label for = "hobi">Hobi</label><br>
+            <input type="text" name="hobi" id="hobi" placeholder="ketikkan hobi"><br><br>
+            <label for="motivasi">Motivasi Anda Memilih </label><br>
+            <textarea name="motivasi" id="motivasi"></textarea>
+        </fieldset>
+        <label for="token">Token</label>
+        <input type="password" name="token" id="token">
+        <br><br>
+        <button type="submit">Kirim</button>
+        <button onclick="return confirm('Apakah Anda yakin ?')" type="reset">Reset</button>
+    </form>
+</body>
+ 
+</html>
